@@ -20,3 +20,6 @@ while True:
     choice = input("\nEnter item number to add to order (0 to finish): ")
     if choice == '0':
         break
+    if not choice.isdigit() or not (1 <= int(choice) <= len(menu)):
+            print("Invalid choice. Please select a valid menu item.")
+            continue
