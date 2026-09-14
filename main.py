@@ -30,3 +30,15 @@ def restaurant_bill_generator():
         if qty <= 0:
             print("Quantity must be greater than 0.")
             continue
+        found = False
+        for entry in order:
+            if entry[0] == item:
+                entry[1] += qty
+                found = True
+                break
+
+        if not found:
+            order.append([item, qty, price])
+
+        total += qty * price
+        print(f"Added {qty} x {item} to your order.")
