@@ -42,3 +42,6 @@ def restaurant_bill_generator():
 
         total += qty * price
         print(f"Added {qty} x {item} to your order.")
+        if not order:
+            print("\nNo items ordered. Exiting...")
+            return
