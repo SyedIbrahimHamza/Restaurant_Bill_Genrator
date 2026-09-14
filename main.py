@@ -23,3 +23,10 @@ def restaurant_bill_generator():
         if not choice.isdigit() or not (1 <= int(choice) <= len(menu)):
             print("Invalid choice. Please select a valid menu item.")
             continue
+        index = int(choice) - 1
+        item, price = menu[index]
+
+        qty = int(input(f"Enter quantity for {item}: "))
+        if qty <= 0:
+            print("Quantity must be greater than 0.")
+            continue
