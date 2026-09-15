@@ -58,3 +58,17 @@ def restaurant_bill_generator():
     tax_amount = (tax_percent / 100) * subtotal_after_discount
 
     grand_total = subtotal_after_discount + tax_amount
+
+    print("BILL RECEIPT ")
+    print(f"{'Item':<15}{'Qty':<5}{'Price':<10}{'Total':<10}")
+    print("-" * 40)
+    for item, qty, price in order:
+        item_total = qty * price
+        print(f"{item:<15}{qty:<5}{price:<10}{item_total:<10}")
+    print("-" * 40)
+    print(f"Subtotal: Rs. {total}")
+    print(f"Discount ({discount_percent}%): -Rs. {discount_amount:.2f}")
+    print(f"Tax ({tax_percent}%): +Rs. {tax_amount:.2f}")
+    print(f"Grand Total: Rs. {grand_total:.2f}")
+    print("=================================")
+    print("Thank you for dining with us!")
