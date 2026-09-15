@@ -45,3 +45,11 @@ def restaurant_bill_generator():
         if not order:
             print("\nNo items ordered. Exiting...")
             return
+        discount_percent = 0
+    if total > 2000:
+        discount_percent = 10
+    elif total > 1000:
+        discount_percent = 5
+
+    discount_amount = (discount_percent / 100) * total
+    subtotal_after_discount = total - discount_amount
