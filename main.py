@@ -71,4 +71,4 @@ def restaurant_bill_generator():
     print(f"Tax ({tax_percent}%): +Rs. {tax_amount:.2f}")
     print(f"Grand Total: Rs. {grand_total:.2f}")
     print("=================================")
-    print("Thank you for dining with us!")
+    print("Thank you for dining with us!") 
