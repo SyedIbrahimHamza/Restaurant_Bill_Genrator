@@ -52,4 +52,9 @@ def restaurant_bill_generator():
         discount_percent = 5
 
     discount_amount = (discount_percent / 100) * total
+
     subtotal_after_discount = total - discount_amount
+    tax_percent = 5
+    tax_amount = (tax_percent / 100) * subtotal_after_discount
+
+    grand_total = subtotal_after_discount + tax_amount
