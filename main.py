@@ -73,4 +73,4 @@ def restaurant_bill_generator():
     print("=================================")
     print("Thank you for dining with us!") 
 
-restaurant_bill_generator()
+restaurant_bill_generator() 
