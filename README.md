@@ -1,48 +1,10 @@
 Restaurant Bill Generator
 
-A simple terminal-based Restaurant Bill Generator built with Python. The program displays a restaurant menu, allows the user to select food items and quantities, stores the order in a list, combines repeated items, calculates the total bill, applies a discount, calculates tax, and calculates the final grand total.
+A simple terminal-based Restaurant Bill Generator built with Python.
 
-This project is designed as a beginner-level Python practice project for learning:
+The program displays a restaurant menu, allows the user to select food items and quantities, stores the order in a list, combines repeated items, calculates the total bill, applies a discount, calculates 5% tax, and displays a complete final bill receipt.
 
-Functions
-
-Lists
-
-Tuples
-
-User input
-
-if, elif, and else
-
-while loops
-
-for loops
-
-Input validation
-
-Integer conversion
-
-String methods
-
-List indexing
-
-List updating
-
-append()
-
-Boolean variables
-
-Arithmetic operations
-
-Percentage calculations
-
-break
-
-continue
-
-return
-
-Basic program flow
+This project is designed as a beginner-level Python practice project for learning fundamental Python concepts through a practical application.
 
 Features
 
@@ -66,17 +28,25 @@ Store selected items in an order list
 
 Combine quantities for repeated items
 
-Calculate the total bill
+Calculate the original subtotal
 
 Apply a discount based on the total
 
-Calculate the discounted subtotal
+Calculate the discount amount
+
+Calculate the subtotal after discount
 
 Calculate 5% tax
 
 Calculate the final grand total
 
+Display a complete bill receipt
+
+Display ordered items, quantities, prices, and item totals
+
 Finish the order by entering 0
+
+Display a thank-you message after the bill
 
 Menu
 
@@ -115,24 +85,35 @@ For example:
 
 ("Burger", 350)
 
-Restaurant Bill Generator
 
-The main program is inside the following function:
+Here:
+
+"Burger" is the item name.
+
+350 is the item price.
+
+Main Function
+
+The main program is contained inside the following function:
 
 def restaurant_bill_generator():
 
 
 This function handles:
 
+Menu creation
+
 Menu display
 
 Customer input
 
-Order processing
+Menu choice validation
 
 Quantity validation
 
-Order storage
+Order processing
+
+Repeated item handling
 
 Total calculation
 
@@ -140,7 +121,16 @@ Discount calculation
 
 Tax calculation
 
-Grand total calculation
+Receipt generation
+
+Final grand total
+
+The function is called at the end of the program:
+
+restaurant_bill_generator()
+
+
+This starts the Restaurant Bill Generator when the Python file is executed.
 
 Displaying the Menu
 
@@ -153,7 +143,21 @@ for i in range(len(menu)):
 
 The len() function determines the number of items in the menu.
 
-The program uses i + 1 because Python list indexes start at 0, while the menu displayed to the user starts at 1.
+The range() function generates the required indexes.
+
+Python list indexes start at 0, but menu numbers displayed to the customer start at 1.
+
+Therefore, the program uses:
+
+i + 1
+
+
+For example:
+
+Python Index     Menu Number
+0                1
+1                2
+2                3
 
 Order Storage
 
@@ -167,7 +171,7 @@ The total bill is initially:
 total = 0
 
 
-Each order is stored as a list containing:
+Each order entry is stored as a list containing:
 
 Item name
 
@@ -189,14 +193,16 @@ The order list could contain:
 
 Taking User Input
 
-The program asks the customer to select an item:
+The program asks the customer to select a menu item:
 
 choice = input("\nEnter item number to add to order (0 to finish): ")
 
 
-The user can enter a number from 1 to 6.
+The user can enter:
 
-The user can enter 0 to finish the order.
+1 to 6 to select a menu item
+
+0 to finish the order
 
 Example:
 
@@ -204,20 +210,20 @@ Enter item number to add to order (0 to finish): 1
 
 While Loop
 
-The program uses a while True loop:
+The program uses:
 
 while True:
 
 
-This allows the customer to continue adding items until they choose 0.
+This allows the customer to continue adding items until they choose to finish the order.
 
-When 0 is entered:
+When the customer enters 0:
 
 if choice == '0':
     break
 
 
-The break statement stops the loop.
+The break statement exits the ordering loop.
 
 Menu Choice Validation
 
@@ -238,7 +244,7 @@ Enter item number to add to order (0 to finish): 9
 Invalid choice. Please select a valid menu item.
 
 
-The continue statement skips the current loop iteration and asks for another choice.
+The continue statement skips the current loop iteration and asks the customer for another choice.
 
 Selecting an Item
 
@@ -252,7 +258,7 @@ The selected item is then retrieved:
 item, price = menu[index]
 
 
-For example, if the user selects:
+For example, if the customer selects:
 
 1
 
@@ -263,7 +269,7 @@ the program retrieves:
 
 Entering Quantity
 
-The program asks the user for the quantity:
+The program asks the customer for the quantity:
 
 qty = int(input(f"Enter quantity for {item}: "))
 
@@ -307,7 +313,7 @@ If the same item is found, its quantity is increased:
 entry[1] += qty
 
 
-For example, if the customer orders:
+For example, if the customer first orders:
 
 2 Burgers
 
@@ -317,7 +323,7 @@ and later orders:
 3 Burgers
 
 
-the program combines them into:
+the order becomes:
 
 5 Burgers
 
@@ -331,7 +337,7 @@ The program uses:
 found = False
 
 
-to track whether an item was found in the order.
+to keep track of whether an item already exists in the order.
 
 When an item is found:
 
@@ -346,13 +352,13 @@ if not found:
 
 This demonstrates the use of:
 
-Boolean values
-
 True
 
 False
 
 not
+
+Boolean variables
 
 Conditional statements
 
@@ -387,9 +393,9 @@ For example:
 2 Burgers × Rs. 350 = Rs. 700
 
 
-The amount is added to the total bill.
+The amount is added to the original total.
 
-After adding an item, the program displays:
+After an item is successfully added, the program displays:
 
 print(f"Added {qty} x {item} to your order.")
 
@@ -402,7 +408,7 @@ Discount Calculation
 
 After the customer finishes the order, the program calculates a discount.
 
-The initial discount is:
+The discount initially starts at:
 
 discount_percent = 0
 
@@ -423,13 +429,26 @@ elif total > 1000:
 
 The customer receives a 5% discount.
 
-If the total is Rs. 1000 or less, no discount is applied.
+Otherwise, no discount is applied.
 
 Discount Rules
-Total Bill	Discount
+Original Total	Discount
 Rs. 1000 or less	0%
 Above Rs. 1000	5%
 Above Rs. 2000	10%
+
+The conditions use > rather than >=.
+
+Therefore:
+
+Rs. 1000 → 0%
+
+Above Rs. 1000 → 5%
+
+Rs. 2000 → 5%
+
+Above Rs. 2000 → 10%
+
 Discount Amount
 
 The discount amount is calculated using:
@@ -437,24 +456,24 @@ The discount amount is calculated using:
 discount_amount = (discount_percent / 100) * total
 
 
-For example, if the total bill is Rs. 1500:
+For example, if the original total is Rs. 1500:
 
 Discount = 5%
 
-Discount Amount = 5 / 100 × 1500
+Discount Amount = (5 / 100) × 1500
                 = Rs. 75
 
 Subtotal After Discount
 
-The program subtracts the discount from the original total:
+The discount is subtracted from the original total:
 
 subtotal_after_discount = total - discount_amount
 
 
 For example:
 
-Original Total:       Rs. 1500
-Discount:             Rs. 75
+Original Total:          Rs. 1500
+Discount:                Rs. 75
 Subtotal After Discount: Rs. 1425
 
 Tax Calculation
@@ -474,11 +493,12 @@ For example:
 Subtotal After Discount = Rs. 1425
 Tax = 5%
 
-Tax Amount = Rs. 71.25
+Tax Amount = (5 / 100) × 1425
+           = Rs. 71.25
 
 Grand Total
 
-The final bill amount is calculated using:
+The final amount is calculated using:
 
 grand_total = subtotal_after_discount + tax_amount
 
@@ -490,7 +510,7 @@ Tax:                     Rs. 71.25
 Grand Total:             Rs. 1496.25
 
 
-The grand_total represents the final amount after applying the discount and tax.
+The grand_total represents the final amount that the customer needs to pay.
 
 Bill Calculation Flow
 
@@ -517,6 +537,64 @@ tax_amount = (tax_percent / 100) * subtotal_after_discount
 
 grand_total = subtotal_after_discount + tax_amount
 
+Final Bill Receipt
+
+The updated version displays a complete receipt.
+
+The receipt displays:
+
+Item
+
+Quantity
+
+Price
+
+Item total
+
+Original subtotal
+
+Discount percentage
+
+Discount amount
+
+Tax percentage
+
+Tax amount
+
+Grand total
+
+The receipt header is formatted using:
+
+print(f"{'Item':<15}{'Qty':<5}{'Price':<10}{'Total':<10}")
+
+
+The program then loops through the order:
+
+for item, qty, price in order:
+    item_total = qty * price
+    print(f"{item:<15}{qty:<5}{price:<10}{item_total:<10}")
+
+
+Each item's total is calculated using:
+
+item_total = qty * price
+
+
+Example receipt:
+
+BILL RECEIPT
+Item           Qty  Price     Total
+----------------------------------------
+Burger         2    350       700
+Pizza          1    900       900
+----------------------------------------
+Subtotal: Rs. 1600
+Discount (5%): -Rs. 80.00
+Tax (5%): +Rs. 76.00
+Grand Total: Rs. 1596.00
+=================================
+Thank you for dining with us!
+
 Program Flow
 
 The program follows this general flow:
@@ -527,7 +605,7 @@ Create the restaurant menu.
 
 Display the welcome message.
 
-Display the menu.
+Display all menu items.
 
 Create an empty order list.
 
@@ -539,15 +617,17 @@ Validate the menu choice.
 
 Get the selected item and price.
 
-Ask the user for quantity.
+Ask the user for a quantity.
 
 Validate the quantity.
 
-Search for an existing item.
+Search for an existing item in the order.
 
-Update the quantity or add a new item.
+Update the existing quantity or add a new order entry.
 
-Calculate the total.
+Calculate the item cost.
+
+Add the cost to the total.
 
 Continue accepting items.
 
@@ -560,6 +640,10 @@ Calculate the discounted subtotal.
 Calculate 5% tax.
 
 Calculate the grand total.
+
+Display the complete bill receipt.
+
+Display a thank-you message.
 
 Python Concepts Used
 
@@ -599,11 +683,15 @@ range()
 
 List indexing
 
+List updating
+
 append()
 
 Boolean variables
 
 True and False
+
+not
 
 Arithmetic operators
 
@@ -619,11 +707,13 @@ Percentage calculations
 
 f-strings
 
+Formatted output
+
 Basic data processing
 
-Important Note About Dictionaries
+Dictionaries
 
-The current version of this project does not use dictionaries.
+The current version does not use dictionaries.
 
 The menu uses a list containing tuples:
 
@@ -638,9 +728,15 @@ The order uses lists inside a list:
 order.append([item, qty, price])
 
 
-A future version could use dictionaries to store order information.
-
 For example:
+
+[
+    ["Burger", 2, 350],
+    ["Pizza", 1, 900]
+]
+
+
+A future version could use dictionaries to store order information:
 
 {
     "item": "Burger",
@@ -652,21 +748,7 @@ Current Limitations
 
 The current version has some limitations:
 
-The final bill is calculated but not printed.
-
-The order details are not displayed as a final receipt.
-
-The discount amount is calculated but not displayed.
-
-The subtotal after discount is calculated but not displayed.
-
-The tax amount is calculated but not displayed.
-
-The grand total is calculated but not displayed.
-
 Quantity input can cause a ValueError if the user enters non-numeric text.
-
-The program does not use dictionaries.
 
 The menu is hard-coded.
 
@@ -682,33 +764,21 @@ There is no payment functionality.
 
 There is no receipt-saving functionality.
 
-The code shown does not include a function call such as restaurant_bill_generator().
+Tax is fixed at 5%.
+
+Discount rates are hard-coded.
+
+Customer information is not collected.
+
+The program is mainly contained inside one function.
+
+There are no automated unit tests.
+
+The program does not use dictionaries.
 
 Future Improvements
 
 Possible improvements include:
-
-Display a complete final receipt.
-
-Display all ordered items.
-
-Display item quantities.
-
-Display item prices.
-
-Display the original total.
-
-Display the discount percentage.
-
-Display the discount amount.
-
-Display the subtotal after discount.
-
-Display the tax percentage.
-
-Display the tax amount.
-
-Display the grand total.
 
 Add try and except for quantity validation.
 
@@ -716,23 +786,33 @@ Prevent invalid quantity input from crashing the program.
 
 Add an option to remove items.
 
-Add an option to update quantities.
+Add an option to update item quantities.
 
 Use dictionaries for storing order information.
 
-Add customer information.
+Add customer name and contact information.
 
 Add payment functionality.
 
-Save receipts to a file.
+Support different payment methods.
 
-Add tax customization.
+Save receipts to a text file.
+
+Add customizable tax rates.
+
+Add customizable discount rules.
 
 Add more menu items.
+
+Allow customers to view their current order before checkout.
 
 Organize the project into multiple functions.
 
 Add unit tests.
+
+Add receipt numbering.
+
+Add date and time to receipts.
 
 Example
 
@@ -759,13 +839,78 @@ Added 1 x Pizza to your order.
 Enter item number to add to order (0 to finish): 0
 
 
-After the order is finished, the program calculates:
+The program then generates a receipt similar to:
 
-Original Total
-Discount
-Subtotal After Discount
-5% Tax
-Grand Total
+BILL RECEIPT
+Item           Qty  Price     Total
+----------------------------------------
+Burger         2    350       700
+Pizza          1    900       900
+----------------------------------------
+Subtotal: Rs. 1600
+Discount (5%): -Rs. 80.00
+Tax (5%): +Rs. 76.00
+Grand Total: Rs. 1596.00
+=================================
+Thank you for dining with us!
+
+Complete Bill Calculation Example
+
+Suppose the customer orders:
+
+2 Burgers
+1 Pizza
+
+
+The calculation is:
+
+Burger:
+2 × Rs. 350 = Rs. 700
+
+Pizza:
+1 × Rs. 900 = Rs. 900
+
+Original Total:
+Rs. 700 + Rs. 900 = Rs. 1600
+
+
+Since the total is above Rs. 1000, the customer receives a 5% discount:
+
+Discount:
+5% of Rs. 1600 = Rs. 80
+
+Subtotal After Discount:
+Rs. 1600 - Rs. 80 = Rs. 1520
+
+
+Tax is then calculated:
+
+Tax:
+5% of Rs. 1520 = Rs. 76
+
+
+Finally:
+
+Grand Total:
+Rs. 1520 + Rs. 76 = Rs. 1596
+
+How to Run
+
+Make sure Python is installed on your computer.
+
+Save the program as:
+
+restaurant_bill_generator.py
+
+
+Then run it from the terminal:
+
+python restaurant_bill_generator.py
+
+
+The program will display the restaurant menu and ask you to enter your order.
+
+Enter 0 when you are finished ordering.
 
 Project Purpose
 
@@ -799,9 +944,19 @@ Discount calculations
 
 Tax calculations
 
+Boolean variables
+
+String methods
+
+f-strings
+
+Formatted output
+
 Basic program structure
 
 Restaurant order processing
+
+Receipt generation
 
 License
 
