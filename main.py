@@ -72,3 +72,5 @@ def restaurant_bill_generator():
     print(f"Grand Total: Rs. {grand_total:.2f}")
     print("=================================")
     print("Thank you for dining with us!") 
+
+restaurant_bill_generator()
