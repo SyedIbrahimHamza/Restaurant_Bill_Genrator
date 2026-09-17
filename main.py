@@ -36,6 +36,11 @@ def restaurant_bill_generator():
                 entry[1] += qty
                 found = True
                 break
+        if not found:
+            order.append([item, qty, price])
+
+        total += qty * price
+        print(f"Added {qty} x {item} to your order.")
 
         if not found:
             order.append([item, qty, price])
